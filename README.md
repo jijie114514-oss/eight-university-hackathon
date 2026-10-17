@@ -39,8 +39,11 @@ npm run start -- --hostname 127.0.0.1 --port 3100
 | `assets/brand/` | 团队 logo 源文件（`team-logo-original.png` 为当前版，`team-logo-legacy-blue.png` 为旧版留档） |
 | 历史 ZIP、PDF、DOCX、Pages | 原始交付和参考资料，保留用于追溯 |
 | `release-checks/` | 本次发布检查报告及结果 |
+| `competition-submission/` | Team 1076 最终 Pitch Deck（PPTX/PDF）、可选 WorkBuddy 报告及阅读说明；尚未向比赛官网提交 |
 
 详细安装说明：[完整项目本地部署说明](完整项目本地部署说明.md)。
+
+最终演示稿：[可编辑 PPTX](competition-submission/pitch-deck/Team%201076%20%E2%80%93%20Tomorrow.pptx) · [便于预览的 PDF](competition-submission/pitch-deck/Team%201076%20%E2%80%93%20Tomorrow.pdf)。稿件包含英文封面、两阶段产品截图、GenAI 实现边界及可点击的 GitHub 仓库链接。
 
 ## 验证与使用边界
 
