@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
 
 export const metadata: Metadata = {
   title: "韌性出行助手｜通勤與港深跨境",
+  icons: { icon: "/team-logo.png", apple: "/team-logo.png" },
   description:
     "把天氣與交通資訊轉成「幾點走、走哪條、什麼時候切換」的行動建議。演示原型，使用固定示範資料。",
 };
@@ -22,7 +24,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased">
         <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-5 sm:px-6 sm:py-8">
           <header className="mb-5 flex flex-wrap items-baseline justify-between gap-2">
-            <Link href="/" className="inline-flex min-h-11 items-center text-lg font-semibold tracking-tight text-slate-900">
+            <Link href="/" className="inline-flex min-h-11 items-center gap-2 text-lg font-semibold tracking-tight text-slate-900">
+              <Image src="/team-logo.png" alt="" width={40} height={40} className="h-10 w-10 shrink-0 rounded-lg bg-white object-contain" priority />
               韌性出行助手
             </Link>
             <span className="text-xs text-slate-500">通勤與港深跨境 · 演示原型</span>
