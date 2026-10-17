@@ -9,8 +9,8 @@ npm ci
 npm run dev -- --port 3100
 ```
 
-開啟 http://localhost:3100/journey ，按「中環 → 福田」查看三條跨境方案。
-`/` 是第一階段通勤入口，`/api/journey` 是第二階段獨立 API。
+開啟 http://localhost:3100/ ，首頁即第二階段港深跨境規劃，按「中環 → 福田」查看三條跨境方案。
+`/phase1` 是第一階段通勤入口，`/api/journey` 是第二階段獨立 API。
 
 - `npm run verify`：lint、型別檢查、單元／集成測試、production build。
 - `npm run probe:route`：原有路徑讀取探針。

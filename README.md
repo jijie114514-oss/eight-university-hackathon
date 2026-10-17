@@ -2,6 +2,12 @@
 
 第一阶段通勤决策、第二阶段港深跨境行程规划，以及团队交付、UI 原型和研究资料的完整项目仓库。
 
+## 在线访问
+
+<https://eight-university-hackathon.vercel.app>
+
+首页即第二阶段港深跨境行程规划；第一阶段通勤演示在 `/phase1`。线上环境需在 Vercel 项目里配置 `DASHSCOPE_API_KEY`，否则「AI 行程解读」显示尚未启用。
+
 ## 运行最新整合版
 
 安装 Node.js 24，在仓库根目录执行：
@@ -10,7 +16,7 @@
 node deploy-local.mjs integrated
 ```
 
-打开 http://localhost:3100/journey 。第一阶段入口为 http://localhost:3100/ 。
+打开 http://localhost:3100/ 。第二阶段（港深跨境）为首页，第一阶段通勤在 http://localhost:3100/phase1 。
 
 也可以手动运行：
 
@@ -30,6 +36,7 @@ npm run start -- --hostname 127.0.0.1 --port 3100
 | `第二阶段信息/` | 第二阶段历史基线；最新功能请用整合版 |
 | `ui-review-prototype/` | React/Vite UI 参考原型 |
 | `analysis/`、`progress-*/`、`generated/` | 研究、评审、进度及素材 |
+| `assets/brand/` | 团队 logo 源文件（`team-logo-original.png` 为当前版，`team-logo-legacy-blue.png` 为旧版留档） |
 | 历史 ZIP、PDF、DOCX、Pages | 原始交付和参考资料，保留用于追溯 |
 | `release-checks/` | 本次发布检查报告及结果 |
 
@@ -41,7 +48,7 @@ npm run start -- --hostname 127.0.0.1 --port 3100
 
 固定示例不需要密钥；公开交通规划依赖网络。香港段使用 GTFS 静态快照，非实时 ETA。深圳公交需要自行配置服务器端 `AMAP_WEB_SERVICE_KEY`，本仓库不包含真实密钥；本次未验证带密钥的深圳实时服务。未配置时不可视为完整跨境服务已接通。
 
-本次发布为 GitHub 源码仓库。应用含服务端 API，运行时需要 Node.js 服务；尚未发布在线网站。
+本次发布为 GitHub 源码仓库，并已部署到 Vercel：<https://eight-university-hackathon.vercel.app> 。应用含服务端 API，运行时需要 Node.js 服务；Vercel 项目的 Root Directory 设为 `A部分/app`，否则构建会因根目录没有 `package.json` 而失败。
 
 `PACKAGE-MANIFEST.json` 与原验证文档保留为输入 ZIP 的历史记录；发布依赖升级、脱敏和新增文件请以 Git 提交及 `release-checks/RELEASE_MANIFEST.json` 为准。历史交付 ZIP 未统一升级依赖，请勿直接视为当前推荐运行版本。
 
