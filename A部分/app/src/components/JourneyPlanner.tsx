@@ -115,7 +115,7 @@ export function JourneyPlanner() {
     change(input); setReplay(index); void run(input);
   }
   return <div className="journey-shell">
-    <div className="journey-heading"><div><p className="journey-eyebrow">港深跨境 · 第二階段演示</p><h1>走哪條，何時走，心裡有數。</h1><p>比較口岸、人流與天氣風險，提前準備另一條路。</p></div><Link href={process.env.NEXT_PUBLIC_PHASE1_URL ?? '/'} className="btn-secondary">第一階段通勤演示 ↗</Link></div>
+    <div className="journey-heading"><div><p className="journey-eyebrow">港深跨境 · 第二階段演示</p><h1>走哪條，何時走，心裡有數。</h1><p>比較口岸、人流與天氣風險，提前準備另一條路。</p></div><Link href={process.env.NEXT_PUBLIC_PHASE1_URL ?? '/phase1'} className="btn-secondary">第一階段通勤演示 ↗</Link></div>
     <div className="journey-workspace">
       <aside className="journey-input-panel">
         <h2>規劃行程</h2><p className="text-sm text-slate-500">演示日期：2026 年 10 月 13 日 · 香港時間</p>
