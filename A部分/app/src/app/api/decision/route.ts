@@ -1,3 +1,4 @@
+import { explainResult } from '@/lib/ai/explain';
 import { NextResponse } from "next/server";
 import { handleDecisionRequest } from "@/lib/api/decision-handler";
 import { apiError } from "@/lib/api/errors";
@@ -18,7 +19,10 @@ export async function POST(request: Request): Promise<NextResponse> {
   }
 
   const result = await handleDecisionRequest(body);
-  return NextResponse.json(result.body, { status: result.status });
+  if (result.status === 200 && !('error' in result.body)) {
+    result.body.aiExplanation = await explainResult(result.body);
+  }
+  return NextResponse.json(result.body, { status: result.status, headers: { 'Cache-Control': 'no-store' } });
 }
 
 export function GET(): NextResponse {

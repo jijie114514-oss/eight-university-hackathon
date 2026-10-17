@@ -1,3 +1,4 @@
+import type { AiExplanation } from './ai';
 import type { CandidateRoute, RouteQuery } from './route';
 import type { RouteMode, CrowdSignal } from './risk';
 import type { RankedRoute } from './reliability';
@@ -28,6 +29,7 @@ export interface DepartureOption {
   meetsDeadline: boolean | null;
 }
 export interface JourneyAnalysis {
+  aiExplanation?: AiExplanation;
   request: JourneyAnalysisRequest;
   routes: AnalyzedJourney[];
   recommendedRouteId: string | null;

@@ -1,3 +1,4 @@
+import type { AiExplanation } from './ai';
 /** A owns the boundary; B=data, C=decisions, D=frontend, E=visual specification. */
 import type { Confidence } from './decision';
 import type { CandidateRoute, RouteQuality, RouteQuery, RouteResolution } from './route';
@@ -42,7 +43,7 @@ export interface TeamDecisionResult {
   explanations: { routeId: string; text: string; evidence: string[] }[];
   notices: string[];
 }
-export interface TeamJourneyResult extends TeamCoreResult { decision: TeamDecisionResult | null }
+export interface TeamJourneyResult extends TeamCoreResult { aiExplanation?: AiExplanation; decision: TeamDecisionResult | null }
 export interface TeamJourneyModules {
   /** B implements this by calling A's resolveRoutes with its providers and cache. */
   resolveCandidates(query: RouteQuery): Promise<RouteResolution>;

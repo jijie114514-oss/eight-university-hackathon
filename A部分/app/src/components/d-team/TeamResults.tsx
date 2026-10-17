@@ -1,3 +1,4 @@
+import { AiExplanationCard } from '../AiExplanationCard';
 import {findPort} from '@/lib/geo/ports';
 import type {TeamJourneyResult,TeamRouteResult} from '@/lib/types/team-integration';
 import {VISUALS,CONFIDENCE,FACTORS,MODES,QUALITY,hk,displayQueue,actionable} from './presentation';
@@ -22,7 +23,7 @@ export function DecisionPanel({result,onSelect,fixture}:{result:TeamJourneyResul
  const d=result.decision;
  const label=(id:string)=>result.routes.find(r=>r.candidate.id===id)?.candidate.label??id;
  return <section className="dt-panel dt-decision" aria-label="行動建議">
-  <h2>{!d?'C 正式決策未接入':d.action==='go'?'行動建議 · go':d.action==='hold'?'暫緩出行 · hold':'暫無可執行方案 · unavailable'}</h2>
+  <AiExplanationCard value={result.aiExplanation}/><h2>{!d?'C 正式決策未接入':d.action==='go'?'行動建議 · go':d.action==='hold'?'暫緩出行 · hold':'暫無可執行方案 · unavailable'}</h2>
   {fixture&&d&&<p className="dt-quality">D mock 決策 · 非 C 正式模型</p>}
   {!d?<p>A 基礎推薦只提供候選排序，未提供 C 行動建議、出發窗口或切換期限。</p>:<>
    {d.action!=='go'&&<p>{d.action==='hold'?'請先留意暫緩原因及官方資訊。':'目前沒有可執行的行動建議。'}下列路線僅供查看，並非出發指令。</p>}

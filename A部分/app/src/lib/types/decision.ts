@@ -1,3 +1,4 @@
+import type { AiExplanation } from './ai';
 /**
  * DecisionResponse — 決策層（成員 C）→ 前端（成員 D）的輸出契約。
  *
@@ -96,6 +97,7 @@ export interface ExcludedRoute {
 }
 
 export interface DecisionResponse {
+  aiExplanation?: AiExplanation;
   status: DecisionStatus;
   /** status = "unavailable" 時為空字串 ""。 */
   departAt: string;

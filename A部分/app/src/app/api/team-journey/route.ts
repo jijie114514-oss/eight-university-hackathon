@@ -1,3 +1,5 @@
+import type { TeamJourneyResult } from '@/lib/types/team-integration';
+import { explainResult } from '@/lib/ai/explain';
 /**
  * 正式團隊行程端點。回傳 `TeamJourneyResult`（不可快取）。
  * 實作在 `@/lib/api/team-journey-handler`；B/C 的注入點見該檔的 `teamModules`。
@@ -19,6 +21,10 @@ export async function POST(request: Request) {
     });
   }
   const result = await handleTeamJourneyRequest(input);
+  if (result.status === 200) {
+    const body = result.body as TeamJourneyResult;
+    body.aiExplanation = await explainResult(body);
+  }
   return NextResponse.json(result.body, {
     status: result.status,
     headers: { 'Cache-Control': 'no-store' },

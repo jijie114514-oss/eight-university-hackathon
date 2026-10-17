@@ -44,3 +44,13 @@ npm run start -- --hostname 127.0.0.1 --port 3100
 本次发布为 GitHub 源码仓库。应用含服务端 API，运行时需要 Node.js 服务；尚未发布在线网站。
 
 `PACKAGE-MANIFEST.json` 与原验证文档保留为输入 ZIP 的历史记录；发布依赖升级、脱敏和新增文件请以 Git 提交及 `release-checks/RELEASE_MANIFEST.json` 为准。历史交付 ZIP 未统一升级依赖，请勿直接视为当前推荐运行版本。
+
+## 真实大模型解读（2026-10-17）
+
+最新整合版 `A部分/app` 已在 `/api/decision`、`/api/journey`、`/api/team-journey` 接入阿里云百炼 `qwen-plus`，对应页面显示独立的「AI 行程解读」。原有路线、ETA、风险、主路与备选均由原规则计算，模型只生成附加说明。演示路线仍标记为 fixture；接入模型不代表实时交通数据已完整接通。
+
+在 `A部分/app/.env.local` 配置服务端 `DASHSCOPE_API_KEY`，可选 `DASHSCOPE_BASE_URL`、`DASHSCOPE_MODEL`，模板见该应用的 `.env.example`。环境文件已被 Git 忽略，密钥不得使用 `NEXT_PUBLIC_` 前缀。部署平台需配置相同的服务端环境变量。修改环境配置后重启服务；源代码更新后重新构建并启动，或使用开发模式。
+
+模型超时（8 秒）、认证失败、限流、空白或截断输出、新增数字或概率时，显示「AI 解读暂时无法取得」并保留规则结果；未配置时明确显示尚未启用。解读不替代官方信息核实。
+
+验证：595 项测试、Lint、TypeScript、生产构建通过；真实 API 验证覆盖通勤、正常跨境、黑雨暂停及正式团队行程。上述验证针对本次新增模型接线。

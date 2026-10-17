@@ -1,5 +1,6 @@
 "use client";
 
+import { AiExplanationCard } from "./AiExplanationCard";
 import { CONFIDENCE_LABELS, CROWDING_LABELS, DECISION_STATUS_LABELS, STATUS_LABELS } from "@/lib/labels";
 import { formatHkDateTime, formatHkTime } from "@/lib/time";
 import { type Confidence, type DecisionResponse } from "@/lib/types";
@@ -23,6 +24,7 @@ export function DecisionCard({ decision }: { decision: DecisionResponse }) {
   const actionable = decision.status !== "unavailable" && decision.departAt !== "";
   return (
     <div className="space-y-4">
+      <AiExplanationCard value={decision.aiExplanation} />
       {actionable ? (
         <PrimaryRecommendation decision={decision} />
       ) : (

@@ -1,5 +1,6 @@
 'use client';
 import dynamic from 'next/dynamic';
+import { AiExplanationCard } from './AiExplanationCard';
 import { AddressSearch } from './AddressSearch';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
@@ -143,6 +144,7 @@ export function JourneyPlanner() {
         {dirty && !loading ? <p className="journey-status">選項已更改。按「比較行程」更新結果；下方仍是上次分析。</p> : null}
         {offline ? <p role="status" className="journey-status">伺服器或網絡不可用，已在本機使用相同演示規則計算。</p> : null}
         {!analysis ? <div className="journey-empty"><h2>先選一段旅程。</h2><p>按「比較行程」，或使用左側「中環 → 福田」查看三個口岸方案。</p></div> : <>
+          <AiExplanationCard value={analysis.aiExplanation} />
           <div className="journey-results-heading"><h2>{analysis.action === 'hold' ? '暫緩非必要行程' : analysis.action === 'unavailable' ? '暫無可行方案' : '候選路線'}</h2><span className="journey-quality">{analysis.routing === 'transit' ? '公開交通參考 · 非即時 ETA' : '演示估算 · fixture'}</span></div>
           {analysis.routes.length === 0 ? <div className="journey-empty"><p>{analysis.routing === 'transit' ? '目前沒有可確認的完整行程，請查看下方原因或使用外部地圖規劃。' : '地點已確認，但這組地址尚未接入演示走廊。可以使用地圖服務繼續規劃。'}</p><a className="btn-secondary" target="_blank" rel="noreferrer" href={`https://www.google.com/maps/dir/?${new URLSearchParams({ api: '1', origin: request.originPlace ? `${request.originPlace.lat},${request.originPlace.lon}` : findPlace(request.origin) ? `${findPlace(request.origin)!.lat},${findPlace(request.origin)!.lon}` : request.origin, destination: request.destinationPlace ? `${request.destinationPlace.lat},${request.destinationPlace.lon}` : findPlace(request.destination) ? `${findPlace(request.destination)!.lat},${findPlace(request.destination)!.lon}` : request.destination, travelmode: 'transit' })}`}>在 Google Maps 規劃此行程 ↗</a></div> : null}
           {analysis.coverage ? <section className="journey-details" aria-label="公交覆蓋狀態"><h2>本次查詢的資料覆蓋</h2><p>香港已匯入 {analysis.coverage.hkStops.toLocaleString()} 個站點、{analysis.coverage.hkRoutes.toLocaleString()} 條線路 · 深圳公交{analysis.coverage.shenzhenConfigured ? '已配置' : '尚未啟用'}</p><p>跨境組合：深圳灣、香園圍／蓮塘 · 暫不含港鐵重鐵。</p>{analysis.coverage.failures.map((failure, i) => <p role="status" key={`${failure.port}-${i}`}>{failure.port}：{failure.message}</p>)}{analysis.coverage.partialPlans?.map(plan => <details key={plan.port}><summary>{plan.port} · 約 {plan.minutes} 分鐘</summary><p>以下僅為單側路段，不是完整跨境方案。</p><ol>{plan.legs.map((leg, i) => <li key={i}>{leg.line ?? '步行'} · {leg.from.name} → {leg.to.name} · 約 {leg.minutes} 分鐘{leg.waitMinutes ? `（含候車預留 ${leg.waitMinutes} 分）` : ''}</li>)}</ol></details>)}</section> : null}
