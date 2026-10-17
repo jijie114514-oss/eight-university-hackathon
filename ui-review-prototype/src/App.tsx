@@ -263,7 +263,7 @@ function Header({ scenario, dataUpdatedAt, onHome }: {
     <header className="global-header">
       <div className="topbar">
         <button className="brand-button" onClick={onHome} aria-label="返回行程輸入">
-          <span className="product-icon"><Icon name="route" size={17} /></span>
+          <span className="product-icon"><img src="/team-logo.png" alt="" width="30" height="30" /></span>
           <span className="brand">{PRODUCT_NAME}</span>
         </button>
         <div className="topbar-meta">
