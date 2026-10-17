@@ -1,0 +1,12 @@
+# 交给 Vercel 的构建环境：只需源码与运行时数据
+docs/
+node_modules/
+.next/
+.next-*/
+*.zip
+*.tsbuildinfo
+verify-release.log
+*.log
+
+# 运行时只需要解压后的路网快照，GTFS 原始包仅用于本地导入
+data/transit/hk-gtfs.zip

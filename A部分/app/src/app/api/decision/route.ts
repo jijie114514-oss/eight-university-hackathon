@@ -4,6 +4,8 @@ import { handleDecisionRequest } from "@/lib/api/decision-handler";
 import { apiError } from "@/lib/api/errors";
 
 export const dynamic = "force-dynamic";
+// 路线计算 + 外部交通接口 + 大模型解读，默认 10 秒函数超时不够用。
+export const maxDuration = 60;
 
 export async function POST(request: Request): Promise<NextResponse> {
   let body: unknown;

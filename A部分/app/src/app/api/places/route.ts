@@ -4,6 +4,9 @@ import { readAddressFeatures, type AddressPlace } from '@/lib/geo/address-search
 import { readAlsAddresses } from '@/lib/geo/als';
 import { searchShenzhen } from '@/lib/transit/amap-search';
 
+// 地点检索会并发请求外部服务（Photon / 高德），默认 10 秒函数超时不够用。
+export const maxDuration = 60;
+
 export async function GET(request: Request) {
   const q = new URL(request.url).searchParams.get('q')?.trim() ?? '';
   if (q.length < 2 || q.length > 120) return NextResponse.json({ places: [], message: '請輸入 2–120 個字搜尋香港或深圳地點。' }, { status: 400 });
