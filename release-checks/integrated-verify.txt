@@ -1,0 +1,121 @@
+
+> resilience-travel-assistant@0.1.0 verify
+> npm run lint && npm run typecheck && npm run test && npm run build
+
+
+> resilience-travel-assistant@0.1.0 lint
+> eslint .
+
+
+> resilience-travel-assistant@0.1.0 typecheck
+> tsc --noEmit
+
+
+> resilience-travel-assistant@0.1.0 test
+> vitest run
+
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 /Users/waywardzz/Desktop/八校黑客松/github-release-2026-10-17/A部分/app
+
+ ✓ src/test/reliability-ranking.test.ts (7 tests) 6ms
+ ✓ src/test/route-crossborder.test.ts (22 tests) 23ms
+ ✓ src/test/risk-engine.test.ts (11 tests) 13ms
+ ✓ src/test/port-conditions.test.ts (32 tests) 54ms
+ ✓ src/test/c-team-decide.test.ts (8 tests) 10ms
+ ✓ src/test/transit.test.ts (15 tests) 10ms
+ ✓ src/test/team-data.test.ts (11 tests) 44ms
+ ✓ src/test/b-data-reliability.test.ts (16 tests) 75ms
+ ✓ src/test/route-parse.test.ts (15 tests) 6ms
+ ✓ src/test/geolocation.test.ts (18 tests) 5ms
+ ✓ src/test/instructions.test.ts (21 tests) 9ms
+ ✓ src/test/decision-live-safety.test.ts (13 tests) 13ms
+ ✓ src/test/decision-advisory.test.ts (23 tests) 15ms
+ ✓ src/test/decision-edge-cases.test.ts (13 tests) 5ms
+ ✓ src/test/context-contract.test.ts (17 tests) 10ms
+ ✓ src/test/api.test.ts (18 tests) 49ms
+ ✓ src/test/decision-scenarios.test.ts (11 tests) 37ms
+ ✓ src/test/decision-disruption-scope.test.ts (11 tests) 8ms
+ ✓ src/test/transport-times.test.ts (11 tests) 45ms
+ ✓ src/test/c-ai.test.ts (8 tests) 11ms
+ ✓ src/test/journey-analysis.test.ts (22 tests) 58ms
+ ✓ src/test/geo-ports.test.ts (19 tests) 5ms
+ ✓ src/test/d-team.test.ts (40 tests) 160ms
+ ✓ src/test/decision-explain.test.ts (14 tests) 29ms
+ ✓ src/test/team-integration.test.ts (7 tests) 14ms
+ ✓ src/test/c-border.test.ts (10 tests) 6ms
+ ✓ src/test/c-ab-integration.test.ts (9 tests) 14ms
+ ✓ src/test/decision-properties.test.ts (61 tests) 42ms
+ ✓ src/test/time.test.ts (16 tests) 5ms
+ ✓ src/test/c-crowd.test.ts (8 tests) 3ms
+ ✓ src/test/c-plan.test.ts (6 tests) 10ms
+ ✓ src/test/validation.test.ts (20 tests) 6ms
+ ✓ src/test/golden.test.ts (4 tests) 11ms
+ ✓ src/test/team-journey-api.test.ts (6 tests) 21ms
+ ✓ src/test/address-search.test.ts (8 tests) 12ms
+stdout | src/test/freeze-smoke.test.ts > 功能凍結驗收：三個情景各 5 次 > 全部執行成功、結果一致，且六項必要輸出齊全
+
+功能凍結驗收（每個情景各 5 次，共 15 次，全部成功）
+正常通勤｜狀態 ready｜信心 高｜出發 08:09｜主路線 R1｜Plan B R2
+暴雨影響｜狀態 ready｜信心 中｜出發 07:58｜主路線 R1｜Plan B R2
+交通中斷｜狀態 uncertain｜信心 低｜出發 07:22｜主路線 R2｜Plan B R3
+
+
+ ✓ src/test/freeze-smoke.test.ts (2 tests) 46ms
+ ✓ src/test/data-adapters.test.ts (7 tests) 57ms
+ ✓ src/test/c-departure.test.ts (5 tests) 5ms
+ ✓ src/test/d-team-upstream-review.test.ts (2 tests) 4ms
+ ✓ src/test/url-params.test.ts (7 tests) 2ms
+ ✓ src/test/frontend-card.test.ts (4 tests) 8ms
+ ✓ src/test/determinism.test.ts (6 tests) 32ms
+
+ Test Files  42 passed (42)
+      Tests  584 passed (584)
+   Start at  16:41:11
+   Duration  1.09s (import 44%, transform 35%, tests 18%, worker 2%)
+
+    Isolate  42 workers spawned · ~80ms startup each (spawn + environment, per file)
+             at least ~292ms faster with isolate: false — reuses workers across files instead of one per file
+
+
+> resilience-travel-assistant@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.27
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 1278ms
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/7) ...
+   Generating static pages (1/7) 
+   Generating static pages (3/7) 
+   Generating static pages (5/7) 
+ ✓ Generating static pages (7/7)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    2.42 kB         125 kB
+├ ○ /_not-found                            142 B         103 kB
+├ ƒ /api/d-team-fixture                    142 B         103 kB
+├ ƒ /api/decision                          142 B         103 kB
+├ ƒ /api/health                            142 B         103 kB
+├ ƒ /api/journey                           142 B         103 kB
+├ ƒ /api/places                            142 B         103 kB
+├ ƒ /api/team-journey                      142 B         103 kB
+├ ƒ /api/transit-status                    142 B         103 kB
+├ ○ /journey                             8.52 kB         120 kB
+├ ○ /journey-team                        8.99 kB         130 kB
+└ ƒ /result                              5.67 kB         128 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/255-ce8c7c75002f810b.js       46.5 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          2.08 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

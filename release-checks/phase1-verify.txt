@@ -1,0 +1,88 @@
+
+> resilience-travel-assistant@0.1.0 verify
+> npm run lint && npm run typecheck && npm run test && npm run build
+
+
+> resilience-travel-assistant@0.1.0 lint
+> eslint .
+
+
+> resilience-travel-assistant@0.1.0 typecheck
+> tsc --noEmit
+
+
+> resilience-travel-assistant@0.1.0 test
+> vitest run
+
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 /Users/waywardzz/Desktop/八校黑客松/github-release-2026-10-17/resilience-travel-assistant
+
+ ✓ src/test/decision-disruption-scope.test.ts (11 tests) 6ms
+ ✓ src/test/decision-edge-cases.test.ts (13 tests) 7ms
+ ✓ src/test/decision-advisory.test.ts (23 tests) 15ms
+ ✓ src/test/decision-live-safety.test.ts (13 tests) 17ms
+ ✓ src/test/context-contract.test.ts (17 tests) 9ms
+ ✓ src/test/decision-scenarios.test.ts (11 tests) 16ms
+ ✓ src/test/decision-explain.test.ts (14 tests) 36ms
+ ✓ src/test/transport-times.test.ts (11 tests) 35ms
+ ✓ src/test/api.test.ts (18 tests) 39ms
+ ✓ src/test/time.test.ts (16 tests) 5ms
+ ✓ src/test/c-ab-integration.test.ts (9 tests) 12ms
+ ✓ src/test/validation.test.ts (20 tests) 12ms
+ ✓ src/test/golden.test.ts (4 tests) 9ms
+ ✓ src/test/decision-properties.test.ts (61 tests) 41ms
+stdout | src/test/freeze-smoke.test.ts > 功能凍結驗收：三個情景各 5 次 > 全部執行成功、結果一致，且六項必要輸出齊全
+
+功能凍結驗收（每個情景各 5 次，共 15 次，全部成功）
+正常通勤｜狀態 ready｜信心 高｜出發 08:09｜主路線 R1｜Plan B R2
+暴雨影響｜狀態 ready｜信心 中｜出發 07:58｜主路線 R1｜Plan B R2
+交通中斷｜狀態 uncertain｜信心 低｜出發 07:22｜主路線 R2｜Plan B R3
+
+
+ ✓ src/test/freeze-smoke.test.ts (2 tests) 17ms
+ ✓ src/test/url-params.test.ts (7 tests) 3ms
+ ✓ src/test/data-adapters.test.ts (7 tests) 32ms
+ ✓ src/test/determinism.test.ts (6 tests) 35ms
+ ✓ src/test/frontend-card.test.ts (4 tests) 12ms
+
+ Test Files  19 passed (19)
+      Tests  267 passed (267)
+   Start at  16:41:10
+   Duration  672ms (import 43%, transform 38%, tests 17%, worker 2%)
+
+
+> resilience-travel-assistant@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.27
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 887ms
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/4) ...
+   Generating static pages (1/4) 
+   Generating static pages (2/4) 
+   Generating static pages (3/4) 
+ ✓ Generating static pages (4/4)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    2.41 kB         125 kB
+├ ○ /_not-found                            131 B         103 kB
+├ ƒ /api/decision                          131 B         103 kB
+├ ƒ /api/health                            131 B         103 kB
+└ ƒ /result                              5.58 kB         128 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/255-ce8c7c75002f810b.js       46.5 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          1.92 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

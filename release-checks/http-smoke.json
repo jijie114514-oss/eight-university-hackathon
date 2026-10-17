@@ -1,0 +1,67 @@
+[
+  {
+    "path": "/",
+    "status": 200
+  },
+  {
+    "path": "/journey",
+    "status": 200
+  },
+  {
+    "path": "/journey-team",
+    "status": 200
+  },
+  {
+    "path": "/api/health",
+    "status": 200
+  },
+  {
+    "path": "/api/transit-status",
+    "status": 200,
+    "body": {
+      "hk": {
+        "available": true,
+        "stops": 9466,
+        "routes": 2452,
+        "feedDate": "2026-10-14T18:50:32",
+        "includesMtrHeavyRail": false
+      },
+      "shenzhen": {
+        "configured": false,
+        "verified": false
+      },
+      "ports": [
+        {
+          "id": "shenzhen-bay",
+          "name": "深圳灣口岸"
+        },
+        {
+          "id": "heung-yuen-wai",
+          "name": "香園圍／蓮塘口岸"
+        }
+      ],
+      "note": "配置狀態不等於路線覆蓋；每次查詢仍需核驗。"
+    }
+  },
+  {
+    "scenario": "normal",
+    "status": 200,
+    "action": "go",
+    "quality": "fixture"
+  },
+  {
+    "scenario": "heavy_rain",
+    "status": 200,
+    "action": "hold",
+    "quality": "fixture"
+  },
+  {
+    "scenario": "disruption",
+    "status": 200,
+    "action": "go",
+    "quality": "fixture"
+  },
+  {
+    "invalidRequestStatus": 400
+  }
+]
